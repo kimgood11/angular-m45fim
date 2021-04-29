@@ -1,0 +1,60 @@
+<h2>Products</h2>
+<div *ngFor="let product of products">
+    <h3>
+        <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+    </h3>
+      <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+    <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts
+  [product]="product" 
+  (notify)="onNotify()">
+</app-product-alerts>
+
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
+<!-- 
+NOTES: <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a> 
+is for making the product name a linkj
+
+NOTES: With *ngFor, the <div> repeats for each product in the list.
+
+NOTES:   <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+On a <p> element, use an *ngIf directive so that Angular only creates the <p> element if the current product has a description. The description from the product.ts folder
+
+NOTES:
+    <button (click)="share()">
+    Share
+  </button>
+Bind the button's click event to the share() method in product-list.component.ts. Event binding uses a set of parentheses, ( ), around the event, as in the (click) event on the <button> element.
+
+NOTES:
+Update the ProductListComponent to receive data from the ProductAlertsComponent.
+
+In product-list.component.html, bind <app-product-alerts> to the onNotify() method of the product list component. <app-product-alerts> is what displays the Notify Me button.
+From = 
+<app-product-alerts
+  [product]="product" 
+</app-product-alerts>
+
+To =
+<app-product-alerts
+  [product]="product" 
+  (notify)="onNotify()">
+</app-product-alerts>
+-->
